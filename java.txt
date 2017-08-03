@@ -1,0 +1,529 @@
+https://PC-20151113QNEI/svn/myNews/wsk
+
+mybatis方法连接数据库：
+	1.在com.chuanxi.books.imodel中编写实体类user.java
+	2.在src根目录下新建一个配置文件mybatis.cfg.xml,建立数据库连接
+	3.在com.chuanxi.books.util下建baseDao.java（读取配置文件，并返回操作数据库返回的session对象）
+	4.在com.chuanxi.books.imodel中建立user.java的映射文件user.xml(里面编写IUserDao接口对应的数据库操作)
+	5.在com.chuanxi.books.dao.impl建立userImpl.java实现接口方法（获取映射文件，执行映射文件）
+	
+
+SQL语句：
+	select COUNT(id) from news;   //查询总共有多少个id
+	select nid from news LIMIT 0,6;    //查询从索引值0开始截取6个的nid
+
+键盘输入：Scanner input = new Scanner();    导入包：import java.util.Scanner;
+	int math = input.netInt();/String chinese = new next();/String english = new nextString();
+判断字符串：if(e.equals("本科") || e.equals("硕士")){}
+
+双重循环实例：
+outer:
+	for(int i=0;i<5;i++){
+		for(int j=0;j<5;j++){
+			if(m ==1){
+				continue outer;  直接跳出内层循环，进入外层循环
+			}
+		}
+	}
+
+字符串（String）是由多个字符（char）组成。利用toCharArray()方法可以将字符串转换成一个字符数组
+写入文本换行：\r\n
+
+5-24 
+
+\t   制表符代表4个空格
+
+byte取值范围：[-127~127]  byte 250 = -4;
+short,long，byte,float,double,int,char,String类型
+SuppressWarnings("unused");  去除警告方法
+常量定义：final double PI = 3.14159
+	如果需要在mian里面引用常量，则需在定义常量前加static关键字： final static double PI = 3.14159
+
+++a:先运算后赋值  a=a+1;a=a;
+a++:先赋值后运算  a=a;a=a+1;
+13%2 = 1:取余
+13/2：取商
+c<<2 =8:位运算符    0000 0010（左移2位0000 1000为8）
+
+a^b 相同为true,不相同为false
+
+5-24
+
+声明数组：
+	int[] a = {98,79,76};  /  int[] a = new int[5]
+
+数组升序排列：Arrays.sort(a);
+数组长度：.length
+
+字符串长度：.length()
+字符串比较：.equals()
+charAt(index)    返回index位置的单字符
+indexOf()
+lastIndexOf()
+substring(index)   包括index字符，一直检索到字符串尾部，然后返回检索的字符串
+substring(beginIndex,endIndex)
+split(“，”)   以逗号为标准，分割一个字符串为字符串数组
+toCharArray();  将字符串转换为单字符数组
+valueOf();    将数组转换成字符串数组
+fileName.endWith(“.java”)   判断fileName是否以.java结尾
+fileName.startWith("http:")   判断fileName是否以http:开头
+fileName.contains(“www”)      判断fileName是否包含www
+time.replace("-","/");   	将字符串中的-替换成/,还可以迭代time.replace().replace
+s1.compareTo(s2)     		返回s1与s2的ASCII码的差值，相同时返回0
+
+foreach()语法：
+	for（String n :name）{}
+
+正则表达式：
+	string.matches("[0-9]({16}|{18})");   返回boolean值
+	身份证：[0-9]({16}|{18})
+	手机号：1[0-9]{10}
+	座机号：[0-9]{4}-[0-9]{7}
+
+
+StringBuffer类（String增强类）：
+	public static void main(String[] args) {
+		Scanner input =new Scanner(System.in);
+		System.out.println("输入一串数字:");
+		String str = input.next();
+		StringBuffer strbu = new StringBuffer(str);
+		for(int i=strbu.length()-3;i>0;i=i-3){
+			strbu.insert(i, ",");
+		}
+		System.out.println("修改后："+strbu);
+	}
+	
+strbu.reverse();翻转字符
+
+面向对象:
+	无参构造函数，函数名与类名相同，初始化属性;
+	有参构造函数：
+		public Dog(String name,String sex){
+			this.name = name;
+			this.sex = sex;
+		}
+
+
+extends继承：  super代表父类对象，只能调用父类公有的属性和方法，私有属性或方法不能调用
+
+方法重写（重写继承父类中的方法），方法重载（对一类中的方法进行重写）。
+
+抽象：abstract
+
+多态：
+	向上转型：Pet p = new Dog();   (Dog类是Pet类的子类)
+
+
+instanceof: if(pet instanceof Dog){}   将父类对象强制转换成子类对象，也判断该父类对象是否是Ｄｏｇ对象
+
+public interface Myinterface{public void food();}  接口中的方法全是抽象的
+
+public class UDisk implements  USBinterface{}   使用implements实现接口
+
+
+打印错误信息：  e.getMessage();
+	try{
+	
+	}catch(Exception e){
+		System.out.println(“产生异常”+e.getMessage());
+	}finally{
+		有无异常都执行这里面的语句
+	}
+
+System.exit(0)   //程序强制关闭退出
+
+throw new Exception("内容");  自定义抛出异常
+
+API方法：
+	toString()
+	hashCode();
+	indentityHashCide()
+	getClass()
+	
+Math类：
+	Math.abs()   
+	Math.ceil(a)  返回大于a的值
+	Math.floor(a)  返回小于等于a的值
+	Math.pow(a,b)   返回a的的b次方
+	Math.random()   随机返回一个大于等于0小于1的值
+	Math.sqrt(a,b)  返回a的开b次根
+	Math.round(a)   四舍五入a
+	Math.max()
+	Math.min()
+
+
+System类:
+	System.gc();    //垃圾回收
+	System.currentTimeMillis()   运行在此行时的系统时间
+
+Array类：
+	Arrays.binarySearch(arr,k)    在arr数组中寻找k，如果没找到返回-1，找到则返回该k值在arr中的下标
+	Arrays.sort(arr)   升序排序
+
+Integer类：
+	Integer.parseInt("123")   将字符串转换成整型
+	Integer.toString(4,2);	4的2进制表示方法
+
+Character类:
+	Character.isDigit(c)  是否为数字
+	Character.isUpperCase(c)  是否为大写大写
+	Character.isLowerCase(c)  是否为小写字母
+
+
+	a.add(b);   //求和
+	a.sybtract(b);   //求差
+	a.multiply(b);	//求乘积
+	a.divide(b);	//求除
+
+BigDecimal类：   //大数据运算，精准运算
+	BigDecimal b1 = new BigDecimal("0.09");
+	BigDecimal b2 = new BigDecimal("0.01");
+	Sysyem.out.println(b1.add(b2));     //0.10
+
+
+Calendar类：
+	Calendar c = new Calendar();   //当前时间
+	int y = c.get(Calendar.YEAR);
+  	int m = c.get(Calendar.MONTH);
+	int d = c.get(Calendar.DATE);
+
+	c.add(Calendar.YEAR,-2);
+
+
+ArrayList类：
+	有序的可重复的集合
+	List ll = new ArrayList();
+	长度：ll.size();
+	得到元素：  ll.get(i)
+	将字符串数组转换成列表数组：List l = Arrays.asList(str);
+
+Map类：
+	Map m = new HashMap();
+	m.put(key,value);
+Stack类：堆栈
+	Stack st = new Stack();
+	st.push("");  插入
+	st.peek();   返回栈顶的元素
+	st.get(0)   返回栈底元素
+	st.search("")  搜索文本返回下标值（下标值从1开始），没找到则返回-1
+	st.pop()   删除栈顶元素
+
+Set集合：
+	不重复的无序集合
+TreeSet类：
+	用add()添加元素的时候，元素会按升序插入排列
+
+泛型：public class Test<T> {
+	public String sum(T a,T b){
+		return (a.toString()+b.toString());
+	}
+	public static void main(String[] args){
+		Test<Integer> t = new Test<Integer>();
+		
+		System.out.println(t.sum(11,12));
+	}
+}
+	
+}
+
+泛型通配符：
+	extends上限通配符
+
+
+6-1：
+Thread(线程):
+	this.wait()  线程等待方法
+	this.noyify()   唤醒其他等待线程
+	this.join()   使得当前线程执行，其他线程在他执行完任务后在执行
+	sysn  
+	
+
+6-2：
+	
+File类：
+	File f = new File("路径"); //得到某路径下的文件/创建文件
+	file.createNewFile();    创建文件
+	f.getName()   文件名
+	f.getPath()   文件相对路径
+	f.getAbsoultePath   文件相对路径
+	f.length()    文件大小
+	
+FileWrite类:
+	f.flush() 刷新缓冲区
+
+
+DataInputStream类：
+	二进制文件读写，例如图片
+
+
+6-3：
+获取IP的类：InetAddress       例子：InetAddress ip = InetAddress.getByName("www.baidu.com");
+检查端口是否到达的方法：ip.isReachable();
+
+URL类：
+	URL url = new URL("http://www.baidu.com/download/index.jsp");
+	System.out.println("协议名称："+url.getProtocol());
+	System.out.println("域名："+url.getHost());
+	System.out.println("端口："+url.getPort());
+	System.out.println("文件："+url.getFile());
+	System.out.println(url);
+
+
+
+JDBC:java连接数据库的技术
+
+DBContection类中：
+	加载数据库驱动类：Class.forName("com.mysql.jdbc.Driver");
+	防止乱码：String url = "jdbc:mysql://127.0.0.1:3306/"+dbname+"?characterEncoding=UTF-8";
+
+预编译PreparedStatement 查询：public static ResultSet executQuery(String sql,Object...objs){
+		ResultSet rs = null;
+		Connection conn = DBTools.getConnection();
+		PreparedStatement pst = null;
+		//将参数传入
+		try {
+			pst = conn.prepareStatement(sql);
+			for(int i=0;i<objs.length;i++){
+				pst.setObject(i+1, objs[i]);
+			}
+			//执行sql
+			rs = pst.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
+	}
+
+6-7：
+url:http://localhost:8080//news/index.html
+
+jsp(Java Server Pages)
+
+jsp注释：<%--   --%>
+
+jsp内置对象：
+	out,
+	request:
+		request.setCharacterEncoding("UTF-8")；  //设置请求的字符编码
+		request.getParameter("userName");  //得到表单数据
+	response：相应请求回应客户端
+		requset.sendRedirect("地址")；  //页面重定向
+		RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
+		rd.forward(request, response); //页面转发
+	session,
+	application
+
+
+
+
+6-9：
+jsp分层开发：
+
+	表示层(util)，业务逻辑层（biz），数据访问层(dao)
+
+smartuoload组件上传文件：用File类
+	initialize(pageContext):初始化pageContext页面上下文对象
+	setAllowedFilesList()允许上传的文件类型
+	setMaxFileSize():允许上传的单个文件大小
+
+6-12：
+jsp标准动作：
+	<jsp:useBean id="news1" class="com.chuanxi.news.entity.News" scope="page"></jsp:useBean>
+	<jsp:setProperty property="ntitle" name="news1" value="新闻标题.."/>
+	<jsp:getProperty property="ntitle" name="news1"/>
+	<jsp:forward page="index.jsp"/>
+
+el表达式：${names["one"]}/${names.one}
+	作用域对象：
+		request.setAttribute("names1", names);//只在一个请求中有效
+		session.setAttribute("names1", names);//只在一个会话中有效
+		application.setAttribute("names1", names);//在整个应用程序中共享
+
+jstl:
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+使用jstl前提条件：
+	1.必须导入jstl.jar包
+	2.在页面上必须声明taglib指令
+	//核心标签代码：taglib uri="http://java.sun.com/jsp/jstl/core"
+	//在页面使用给出标签名：prefix="c"
+
+jstl操作：
+    <c:set var="example" value="${100+10}" scope="session"/>
+    输出1：${example }
+    输出2：<c:out value="${example }"/><br>
+    <c:if test="${example >90 }">
+    	<b>表达式为真</b><br>
+    </c:if>
+    <c:choose>
+    	<c:when test="${example >90 }">
+    		<b>大于90</b>
+    	</c:when>
+    	<c:otherwise>
+    		<b>小于90</b>    	
+    	</c:otherwise>
+    </c:choose>
+    <c:remove var="example"/>
+
+<c:forEach>遍历：
+	List<News> news = new ArrayList<News>();
+	request.setAttribute("n",news);
+	<c:forEach items="${n}" var="ns" varStatus="stn">
+		${ns.nid},${ns.ntid}    //ns是指遍历到的当前项即js中的item
+		${stn.index}     //stn.index指遍历到的当前项的索引值即js中的index
+	</c:forEach>
+
+
+servlet:
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		String opr =request.getParameter("opr");//得到请求
+		NewsBizImpl newsBiz =new NewsBizImpl();
+		if(opr.equals("list")){ //判断是什么请求
+			List<News> newlist = newsBiz.getAllNews();//对请求进行操作
+			HttpSession session =request.getSession();
+			session.setAttribute("newlist", newlist);  //回应请求
+			response.sendRedirect("../admin/admin.jsp");//跳转到相应的界面
+		}
+	}
+
+6-14：
+	javaweb三大组件：servlet,过滤器(filter) 监听器（listener）
+
+	servlet是用来执行用户请求。
+
+	过滤器是用来阻止用户请求（当用户请求某个Servlet时，Tomcat会去执行注册在这个请求上的Filter，然后是否“放行”由Filter来决定。可以理解为，Filter来决定是否调用Servlet！当执行完成Servlet的代码后，还会执行Filter后面的代码）。
+
+	监听器就是一个实现特定接口的普通java程序，这个程序专门用于监听另一个java对象的方法调用或属性改变，当被监听对象发生上述事件后，监听器某个方法将立即被执行。
+
+6-15：
+ajax:
+1.$.get()   $.post():
+	function checkUserExists(){
+         var un = document.getElementById("uname").value;
+         if(un==""){
+            alert("用户名不能为空!");
+            return;
+         }else{
+            var url = "servlet/userControl.do?opr=findUser&uname="+un;
+            $.post(url,function(data){
+	            if(data == "true"){
+	            	$('#messdiv').html("用户名已存在，请重输！");	
+	            }else{
+	            	$('#messdiv').html("用户名可以使用！");
+	            }
+            	
+            });
+         }
+       }
+
+2.$.ajax():
+	function checkUserExists(){
+         var un = document.getElementById("uname").value;
+         if(un==""){
+            alert("用户名不能为空!");
+            return;
+         }else{
+            var url = "servlet/userControl.do?opr=findUser&uname="+un;
+            $.ajax({
+	         	type:"GET",
+	         	url:url,
+	         	data:{"uname":un},
+	         	dataType:"json",
+	         	success:function(data){
+	         		if(data){
+		            	$('#messdiv').html("用户名已存在，请重输！");	
+		            }else{
+		            	$('#messdiv').html("用户名可以使用！");
+		            }
+	         	}
+	        });
+         }
+       }
+
+3.load():
+	function checkUserExists(){
+         var un = document.getElementById("uname").value;
+         if(un==""){
+            alert("用户名不能为空!");
+            return;
+         }else{
+            var url = "servlet/userControl.do?opr=findUser&uname="+un;
+            $("#messdiv").load(url,function(data){
+	            if(data == "true"){
+	            	$('#messdiv').html("用户名已存在，请重输！");	
+	            }else{
+	            	$('#messdiv').html("用户名可以使用！");
+	            }
+            	
+            });
+         }
+       }
+
+4.json:
+	var person={"id":11,"name":"张三","email":"2224524274@qq.com",
+    	address:{country:"china",city:"深圳"}};
+    	var n = person.name;
+    	$('#msg').html("person.name="+n);
+    	var c = person.address.country;
+    	$('#msg').append("<br>address.city="+c);
+
+
+java数据库对象转换成json对象：
+
+	1.取得json对象：PrintWriter out = response.getWriter();
+			News ns = newBiz.getNewsById(nid); //得到一个因为对象，包括他的内容
+			JSONObject jObject = JSONObject.fromObject(ns);
+			out.print(jObject);
+	2.将数组转换成json数组：
+	public static void main(String[] args) {
+		UserBizImpl userBiz = new UserBizImpl();
+		List<Users> listUsers = userBiz.getAllUsers();
+		System.out.println(listUsers);
+		JSONArray jarr = JSONArray.fromObject(listUsers);
+		System.out.println(jarr);
+		//[{"uid":3,"uname":"admin","upwd":"admin"},{"uid":2,"uname":"test","upwd":"123456"}]
+	}
+
+6-16：
+获取a链接后面的参数：<a href="index.jsp?opr=getnews&nid=5">得到新闻</a>
+	var nidpara = location.seacher();//得到?opr=getnews&nid=5
+	String s = nidpara.substring(17,nidpara.length);
+
+序列化表单：$("form").serialize()
+html代码:
+<form>
+  <div><input type="text" name="a" value="1" id="a" /></div>
+  <div><input type="text" name="b" value="2" id="b" /></div>
+  <div><input type="hidden" name="c" value="3" id="c" /></div>
+  <div>
+    <textarea name="d" rows="8" cols="40">4</textarea>
+  </div>
+  <div><select name="e">
+    <option value="5" selected="selected">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+  </select></div>
+  <div>
+    <input type="checkbox" name="f" value="8" id="f" />
+  </div>
+  <div>
+    <input type="submit" name="g" value="Submit" id="g" />
+  </div>
+</form>
+
+jquery代码:
+$('form').submit(function() {
+  alert($(this).serialize());
+  return false;
+});
+
+结果：a=1&b=2&c=3&d=4&e=5
+
+
+
+

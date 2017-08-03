@@ -1,0 +1,40 @@
+浏览器兼容：
+	-ms-	//ie
+	-webkit-  //chrome  或者 safari
+	-moz-	//火狐
+	-o-    //欧朋
+
+@keyframe work{
+	from{left:0px;}
+	to{left:200px}
+}
+
+animation:work 5s linear 2s infinite alternate;(动画属性)
+	animation-name:work;   //动画名称
+	animation-duration:5s;  //动画完成的时间
+	animation-timing-function: linear； //动画的速度曲线linear(匀速) ease-in-out(慢进慢出)
+	animation-delay: 5s;     //延迟时间
+	animation-iteration-count:infinite;   //动画播放的次数
+	animation-direation:alternate;  //动画是否反向播放
+
+
+transform:(2d转换)
+	translate(100px,50px);
+	rorate(45deg);
+	scale(1.5);
+	skew();
+	matrix();   //所有 2D 转换方法组合在一起
+
+transform-origin:20% 40%;  //旋转元素基点位置
+
+
+3d转换：perspectice:100px;景深
+
+文本布局:
+	colun-count:3;   //文本分成多少列
+	column-gap:40px;   //列之间的间距
+	column-rule：3px outset #ccc;  //规定列的宽度，样式和颜色
+
+
+选择器：
+	：selection   //选择被用户选取的元素部分

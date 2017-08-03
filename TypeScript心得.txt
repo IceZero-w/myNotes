@@ -1,0 +1,86 @@
+es是种脚本规范，es5,es6都是他的一个版本。而javascript是以es5为规范的一种脚本语言，typeScript是以es6为规范的一种脚本语言
+
+1.typeScript相对于js的优势：
+	1：搞面向对象巨方便
+
+	2：可选的强类型可以让你在程序运行之前多发现一些错误
+
+	3：为IDE给javascript弹智能提示打下了良好的基础
+
+
+
+
+
+
+一。参数类型
+
+2.参数类型：	var a:any = 1 || '1' || {b:1} || ...   任何类型
+		var a:number = 1;             数字类型
+		var a:boolean= true        boolean类型
+		function a(b:string,c:number):void{}     void类型
+		//自定义类型，给javascript弹智能提示
+		class Person{name:string}
+		var wsk:Person = new Person();
+		wsk.name = 'wssss';
+
+3.默认参数：  	function wsk(a:string,b:string,c:string = '222'){     //参数c的形式就是默认参数
+			console.log(a);
+			console.log(b);
+			console.log(c);	
+		}  
+		wsk('1','2');    //1,2,222
+
+	注意事项：默认参数只能写在末尾，否则会报错
+
+4.可选参数：	function wsk(a:string,b?:string,c:string = '222'){     //在参数后面加一个问号例如参数b
+			console.log(a);
+			console.log(b);
+			console.log(c);	
+		}
+		wsk('2');   //2,undefined,222
+
+	注意事项:	1.可选参数不能在必选参数之前 
+			2. 当可选参数为传值的时候不能获取可选参数的长度（b.length），否则会报错
+
+
+
+
+
+二。函数新特性
+
+5.Rest and Spread操作符（...arg）：  	function wsk(...arg){    //通过...来声明任意数量的参数
+						arg.forEach(function(item){
+							console.log(item);
+						})
+					}
+					wsk(1,2);  //1,2
+					wsk('3',4,'5',6)  //3,4,5,6
+					
+6.generator函数：   控制函数的执行过程，手工暂停和回复代码执行
+			function* doSomething(){
+    				console.log('start');
+    				yield;
+    				console.log('end');
+			}
+			var func = doSomething();
+			func.next();
+			func.next();
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

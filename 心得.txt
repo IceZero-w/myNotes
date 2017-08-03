@@ -1,0 +1,197 @@
+面试题网址：https://github.com/BearD01001/front-end-QA-to-interview
+
+1.
+title:	title作为属性时，用来为元素提供额外说明信息。例如，给超链接标签a添加了title属性，把鼠标移动到该	链接上	面是，就会显示title的内容，以达到补充说明或者提示的效果。 
+
+alt:	而alt属性则是用来指定替换文字，只能用在img、area和input元素中（包括applet元素），用于网页中图片		无法正常显示时给用户提供文字说明使其了解图像信息。
+
+
+2.三次握手，四次挥手：
+三次挥手：
+1.主机A向服务器发送SYN=1，并生成一个随机序列码123
+2.主机B接收到后返回一个确认码（124），SYN=1 ACK=1 并生成随机序列码567
+3.主机A接收到后并判断ACK是否为1并且确认码是否为第一次发送的随机码+1，判断成功后，发送确认码（568） ACK=1
+三次握手后主机B确认确认码是否为自己发出的序列码+1且 ACK=1，成功后进行传输连接
+
+四次挥手：
+1.主机A向B发出FIN，关闭A与B的链接（报文段4）
+2.主机B接受后，返回ACK和确认序号（报文段5）
+3.主机B向A发出FIN，关闭B与A的链接（报文段6）
+4.主机A接受后，返回ACK和确认序号（报文段7）
+四次挥手后不能再爱了，停止传输
+
+
+3.HTML5标签:
+B 这里考察HTML标签的使用： <audio> 标签定义声音，比如音乐或其他音频流。 A正确。 <canvas> 标签定义图形，比如图表和其他图像。<canvas> 标签只是图形容器，您必须使用脚本来绘制图形。 B错误，<article>标签定义外部的内容。比如来自一个外部的新闻提供者的一篇新的文章，或者来自 blog 的文本，或者是来自论坛的文本。亦或是来自其他外部源内容。 <menu> 标签定义命令的列表或菜单。<menu> 标签用于上下文菜单、工具栏以及用于列出表单控件和命令。 C正确 command 元素表示用户能够调用的命令。<command> 标签可以定义命令按钮，比如单选按钮、复选框或按钮。只有当 command 元素位于 menu 元素内时，该元素才是可见的。否则不会显示这个元素，但是可以用它规定键盘快捷键。 D正确
+
+
+4.跨域问题：
+同源政策：即不同源不能彼此访问JS资源，目的是为了安全
+
+什么是域：
+https://www.baidu.com:443/index.html  (http://  协议)(www  子域名)(baidu.com  主域名)(443 端口号)(index.html 请求资源地址)
+	a.只要协议 域名 端口号任意一个不同的都是不同域
+	b.http://后面的东西是域名
+	c.协议就是http HTTPS
+	d.端口号就是冒号后面的数字,没有冒号后面的数字http默认是80,HTTPS默认是443
+	e.HTTPS协议比http协议多加了一层安全层
+
+什么是跨域？ 不同域之间相互请求资源，就叫做跨域。
+如何解决跨域问题：
+	1.CORS（跨域资源共享） ：这种方式是服务端设置请求头允许某些源跨域或者所有源跨域
+	2.jsonp（中文叫json填充）：这种方法是利用了script标签是不受同源政策限制的，在script标签中的src去		请求服务端资源，请求体里包含一个回调函数，然后服务端接到请求讲数据拼成json传入回调函数，返回给客		户端，这样就做到了跨域请求！
+	缺点：只能get请求
+	3.iframe：原理也是利用iframe不受同源政策影响
+	4.Nginx反向代理：Nginx的功能就是解决跨域
+
+
+5.json与jsonp的关联：
+	json是一种数据格式，jsonp是一种解决跨域的方法，因为jsonp需要服务端给回调函数填充的数据需要包装成json格式
+5.1.json与js对象的关系：
+	json是js对象的一种描述性文本，
+	json转js对象：JSON.parse(json)
+	js对象转json：JSON.stringify(obj)
+
+
+6.闭包：
+	1.1.函数嵌套函数 2.函数内部可以引用外部的参数和变量 3.参数和变量不会被垃圾回收机制回收
+	2.使用闭包主要是为了设计私有的方法和变量。闭包的优点是可以避免全局变量的污染，缺点是闭包会常驻内	存，会增大内存使用量，使用不当很容易造成内存泄露
+
+
+浏览器内核：
+	1）Trident: IE 以Trident 作为内核引擎；
+	2)Gecko: Firefox 是基于 Gecko 开发；
+	3）WebKit: Safari, 	Google Chrome,傲游3,猎豹浏览器,百度浏览器 opera浏览器；
+	4）Presto: Opera的内核，但由于市场选择问题，主要应用在手机平台--Opera mini。
+	注：2013年2月Opera宣布转向WebKit引擎
+	注：2013年4月Opera宣布放弃WEBKIT，跟随GOOGLE的新开发的blink引擎
+
+7.cookie与session:
+	cookie数据存放在客户的浏览器上，session数据放在服务器上。
+
+8.css选择器优先级算法：
+	!important >  id > class > tag  
+  
+	important 比 内联优先级高,但内联比 id 要高
+
+9.什么是Ajax？
+	不用刷新页面，但可以和服务端进行通信的方式。主要方式：XMLHttpRequest对象
+Ajax传输数据的三种方式：
+	1.)XML:笨重，解析困难。但XML是通用的数据交换格式。
+	2.）HTML:不需要解析，可以直接放到文档中。诺仅更新一部分区域，传输的数据不是很方便，且HTML代码需	要拼装完成。
+	3.）JSON：小巧，有面向对象的特征，且有很多第三方jar包可以把java对象或集合转为JSON字符串
+
+10.原型链：
+	每个对象都有一个属性—_proto_,指向它的原型，原型还有它的原型，一直延伸到原型为null,这就成了一条链子（原型链）。
+	对象调用方法就是在这条原型链上找，如果没找到就报错。
+
+11.判断数据类型方法:
+	typeof
+	instanceof
+	Object.prototype.toString.apply([]); === "[object Array]";
+	Object.prototype.toString.apply(function(){}); === "[object Function]";
+
+
+
+
+
+12.什么是钩子函数？
+	钩子函数指的是一个对象的生命周期对应的函数
+
+
+13.http是什么？    超文本传输协议,是计算机通过网络进行通信的一种规则
+  http的作用？     使得客户端能够向服务器发起请求与服务
+  一个完整的http请求过程？   	1.建立TCP连接（传输控制协议）
+				2.浏览器（也就是客户端）向服务器发送请求命令
+				3.浏览器向服务器发送请求头信息
+				4.服务器向浏览器做出应答
+				5.服务器向浏览器发送应答头信息
+				6.服务器向浏览器发送发送数据
+				7.服务器关闭TCP连接
+
+14.你知道哪些http状态码？    	1.1XX：1开头的表示信息类，表示接收到web浏览器请求，正在进一步处理请求
+				2.200: 表示用户请求被正确接收
+				3.3XX: 重定向，表示请求没有成功，客户必须进一步动作
+				4.4XX: 客户端错误，表示客户端提交的请求有错误
+				5.5XX: 服务器错误，表示服务器不能完成对请求的处理 
+
+15.浏览器发起请求后怎么才知道服务器是否响应? 通过监听XMLHttpRequest的属性readyState值的变化（值的变化代表服务器响应的变化）
+						1.readyState === 0:请求未初始化，open（）方法还没调用
+						2.readyState === 1:服务器连接已建立，open()方法已经调用
+						3.readyState === 2:请求已被接受，也就是服务器接收到头信息
+						4.readyState === 3:请求处理中，也就是接收到响应主体
+						5.readyState === 4:服务器已经处理完请求，且响应已就绪
+
+
+16.Ajax的get请求：var request = new XMLHttpRequest();
+			request.open('GET','service.php?name=王圣康')；	//调用http请求，建立浏览器与服务器的链接
+			request.send(); 				//发送请求头信息，get方式不需要填写参数 
+			request.onreadystatechange = function(){   	//监听服务器处理浏览器发送的请求状态
+				if(request.readyState === 4){  		//判断服务器是否处理请求完成，并准备响应请求
+					if(request.status === 200){ 	// 判断浏览器请求是否被正确接收
+						var data = JSON.parse(request.responseText);
+						if(data.success){
+							document.body.innerHTML = data.msg;
+						}else{
+							document.body.innerHTML = "出现错误"+data.msg;
+						}
+					}
+				}else{
+					alert("发现错误"+request.status);
+				}
+			}
+
+
+Ajax的POST请求：var request = new XMLHttpRequest();
+			request.open('GET','service.php')；	//调用http请求，建立浏览器与服务器的链接
+			var data = 	‘name=’+document.getElementById("#username").value
+					+'&password='+document.getElementById("#password").value;
+			request.setRequestHeader("Content-Type","application/x-www-form-urlencoded"); //设置请求头类型
+			request.send(data); 				//发送请求头信息，get方式需要填写参数 
+			request.onreadystatechange = function(){   	//监听服务器处理浏览器发送的请求状态
+				if(request.readyState === 4){  		//判断服务器是否处理请求完成，并准备响应请求
+					if(request.status === 200){ 	// 判断浏览器请求是否被正确接收
+						document.body.innerHTML = requset.responseText;//请求成功，做一些事情
+					}else{
+						document.body.innerHTML = "出现错误"+data.msg;
+					}
+				}else{
+					alert("发现错误"+request.status);
+				}
+			}
+
+
+终止上一次请求：xhr.abort();
+
+17.正向代理：
+	正向代理就是我派一个代理人去B地拿货 B地并不知道是我要货可能我是个坏蛋 （我是客户端，地是服务端，代理人是代理服务器）
+	用处：正向代理可以用来翻墙
+
+反向代理：
+	反向代理就是我派代理人去拿货 但是我并不知道是去哪个地方拿    
+	用处：反向代理可以解决跨域，可以做负载均衡
+
+负载均衡：负载（服务器压力过大，客户端请求过多） 均衡（负荷的服务器将部分请求通过代理服务器分给其他服务器处理请求，减轻自身压力）
+
+正向代理隐藏真实客户端，反向代理隐藏真实服务器
+
+
+18.js编写jquery选择器：function $(e){
+				return document.querySelectorAll(e);			
+
+			}
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+

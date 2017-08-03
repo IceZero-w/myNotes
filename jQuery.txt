@@ -1,0 +1,153 @@
+去除字符串中前后空格：value = $.trim(value)
+$('input').autocomplete{score:数组}；  //输入框提示语
+
+$(document)  获取整个文档对象       
+$(document).ready（function(){}）  获取文档就绪的时候
+$(window).load(function(){})   load()方法会使得页面完全加载完毕之后再触发里面的事件
+function(event){}     event:事件对象
+对象.width()    得到对象的定义的宽度不包括padding,border.
+对象.outerWidth()  得到对象的宽度包括padding,border.
+jquey获取min在数组arr里面的索引值：$.inArray(min,arr);
+jqery获取元素组里最后的一个元素：$(对象).last();
+jquery获取元素本身到浏览器顶部的距离： $(对象).offest().top;
+jquery在创建的对象div.div1中在创建对象span:  var oDiv = $('<div>').addClass('div1');
+					var oSpan = $('<span>').appendTo($(oDiv));
+
+滚动条过渡：
+  $(function(){
+    $('a').eq(0).click(function(){
+      $('html,body').animate({scrollTop:0},1000);      
+    })
+    $('a').eq(1).click(function(){
+      $('html,body').animate({scrollTop:$('#production').offset().top},1000);    
+    })
+    $('a').eq(2).click(function(){
+      $('html,body').animate({scrollTop:$(document).height()},1000);
+    })
+  })
+
+真正的移除属性：removeProp('checked');
+		或者removeAttr('checked');   但这个有点问题。。。。
+
+5-14：
+
+1.DOM:Document Object Model
+2.解决jQuery与其他库冲突方法：1. 开头写jQuery.onConflict();然后用jQuery(对象)代替$(对象)
+			2.var $jq = jQuery.onConflict();$jq(对象)代替$(对象)
+3.window.onload()方法是在页面所有内容都载入完毕后才执行的，例如图片、横幅等。
+$(document).ready()方法是在DOM元素载入就绪后执行。
+4.工厂函数：$
+
+5.判断jquery对象是否出错： 1.if（$("#mr").length>0）{alert($("#mr").val())}   判断长度
+			2.if($("#mr").get(0)){alert($("#mr").val())}  判断转换为DOM对象后是否存在
+
+6.$('div+p') 获取紧跟div后面的p元素
+$('div~p')  获取div所有的兄弟p元素
+
+5-15:
+
+$('select').val(['列表项1','列表项2']);    为下拉列表设置多选值
+创建DOM节点并插入到尾部:
+	var $p1 = $('<p></p>');
+	$('#box1').append($p1);
+创建DOM节点并插入到首部:
+	var $p1 = $('<p></p>');
+	$('#box1').prepend($p1);
+删除DOM节点：
+	var $p = $('p:eq(0)').remove();
+	$(div).append($p);                      remove()方法删除节点后会返回删去的节点不保留方法
+
+	var $p = $('p:eq(0)').detach();
+	$(div).append($p);                      detach()方法删除节点后会返回删去的节点并且保留方法
+
+	$('p:eq(0)').empty();                   empty()方法只清空文本，不删除节点
+克隆节点：
+	clone(true);    当参数为true的时候，克隆该元素所有的文本和事件
+	clone(false);    当参数为false的时候，只克隆该元素的文本，不克隆事件，默认状态为false
+	例子：$('p:eq(0)').clone().insertAfter(this);
+
+替换节点：
+	$('#div1').replaceWith("<div>replaceWith方法的结果</div>");  替换id为#div1的元素
+	$("<div>replaceAll方法的结果</div>").replaceAll('#div2');    替换id为div2的元素  
+
+
+５-16：
+
+attr与removeAttr:
+	$('input').attr('value',function(){return this.name});   将元素的名称当做value的值
+	$('img').attr({src:'../images/1.jpg',title:'我是第二张图片'})   添加多个属性
+	$('img').removeAttr('title');    移除所有图片的title属性
+
+添加删除类：
+	$('li').addClass('active');
+	$('li').removeClass('active');
+	$('li').toggleClass('active');    如果该元素存在active类则删除这个类，如果不存在active类则添加；
+	$('li').toggleClass('active',true);  如果为true，则添加active这个类，否则删除这个类
+
+jquery事件：
+	keydown();	按下键盘触发       switch(keyCode){case 37：alert（“左”）；}　上下左右：													38,40,37,39
+	keyup();	抬起触发
+	keypress();    按下并抬起后触发
+	mousedown()    鼠标在元素上点击后触发
+	mouseup()      鼠标在释放后触发
+	mousemove()    鼠标在元素上触发
+	resize()       当元素窗口大小发生改变的时候在触发
+  	select()       文本内容被选中后触发
+绑定事件：
+	$('button').bind('click',function(){});    
+移除事件绑定：
+	$('button').unbind('click');  
+绑定一次性事件：
+	$(''button').one('click',function(){});
+模拟用户事件trigger:
+	$('button').bind('click',function(event,msg1,msg2){
+		alert(msg1+msg2);
+		}).trigger("click",["欢迎访问"，"明日科技"]);
+模拟悬浮事件hover：
+	hover(over,out);    例子：
+	$('div').hover(function(){
+		$('div').css('background','#ccc');
+		},function(){
+			$('div').css('background','#cfc');
+		})
+
+阻止浏览器默认行为：
+	event.preventDefault()
+
+事件属性对象：
+	event.type    获取事件属性类型
+	event.target   获取触发事件的元素
+	event.relatedTarget    只针对于mouseover和mouseout两个事件
+	event.x,enevt.y   || event.pageX ,event.pageY   得到光标的位置
+
+jquery的动画效果：
+	hide('slow');   slow:600毫秒     normal:400毫秒   fast:200毫秒 使用这三个参数的时候需要加引号
+	show();
+	toggle();
+	fadeIn();	通过增大不透明度实现元素的淡入效果
+	fadeOut();   	通过减小不透明度实现元素的淡出效果
+	fadeTo(speed,opacity,[callback]);    $('img').fadeTo(300,0.1);  将透明度在300毫秒内调至0.1
+	slideDown()     滑动的显示出来
+	slideUp()   	滑动的隐藏起来
+	slideToggle()   0
+	
+animate动画：
+	$('div').animate({left:"400px"},1000).animate({top:"100px",left:"0"},1000);
+	stop(false,true)方法：停止匹配元素正在运行的动画，并立即执行动画队列的下一个动画。
+	stop(true,true)方法：停止匹配元素正在运行的动画，并直接到达当前状态的尾部。
+
+	if(!$(element).is(":animated")){   判断元素是否处于动画状态
+		
+	}
+延迟动画delay();
+	$('div').delay(1000).animate({left:"400px"},1000);    将动画延迟1s
+
+表单操作：
+	$('select').empty();
+	下拉框添加菜单项： $('select').append('<option value="">文本</option>');
+
+
+
+
+
+

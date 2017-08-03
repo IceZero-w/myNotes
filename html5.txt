@@ -1,0 +1,79 @@
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+1.语义化标签：
+	header 头部
+	footer	尾部/页脚
+        nav	导航栏
+	section  文章，内容，用来划分区域
+	article  独立的内容，可以包裹nav,section
+	aside  侧边栏
+	figure>figcaption
+	time   表现时间或日期 <time datetime="2018-2-4">情人节</time>
+	<datalist></datalist>选项列表
+
+		<input type="text" list="myList"/>
+		<datalist id="myList">
+			<option>java</option>
+			<option>java</option>
+			<option>java</option>
+		</datalist>
+	
+	<details open>  //当open存在时，隐藏内容显示
+		<summary>标题</summary>
+		<p>隐藏的内容</p>
+		<p>隐藏的内容</p>
+		<p>隐藏的内容</p>
+	<details>
+
+	<dialong>   //定义一段对话
+		<dd>老师</dd>
+		<dt>你好</dt>
+	</dailong>
+	
+	<address></address>  //地址标记
+	<mark></mark>    //标记
+	
+ 	<keygen name="security">  //公钥，安全方面的标签
+	<progress max="200" value="100"></progress> //进度条
+
+	h5兼容ie9以下：
+	<!-- [if lt IE 9]>
+	<script src="script/html5shiv.min.js">
+	<![endif]>
+
+新表单控件：
+	email,tel,url,search,range,color,datetime-local,time
+	<input type="range" step="2" min="0" max="10" value="2">
+	
+	<input type="text" autocomplete="off" pattern="\d{1,5}" autofocus> 
+	//readonly控件只读 required必填 autofocus自动得到焦点 autocomplete 是否保存用户输入值 formaction="www.baidu.com"表单另一个		提交地址
+
+表单invalid事件：
+	oText.addEventListenner('invalid',fn,false); 添加监听事件
+	ev.preventDefault() 阻止浏览器默认操作
+	valueMissing 输入值为空时，返回ture
+	patternMismatch 输入值不满足pattern正则时，返回true
+	tooLong 超过maxLength最大限制时，返回true
+	rangeUnderflow 验证range的最小值
+	rangeOverflow 验证range最大值
+	stepMismatch 验证range的当前值 是否符合min,max,step的规则
+	typeMismatch 控件值与预期类型不匹配时，返回true
+
+新增加标签属性：
+	contenteditable="true"   可编辑的
+
+画布画渐进的矩形：
+	var c=document.getElementById("myCanvas");
+	var ctx=c.getContext("2d");
+
+	var grd=ctx.createLinearGradient(0,0,170,0);
+	grd.addColorStop(0,"black");
+	grd.addColorStop(1,"white");
+
+	ctx.fillStyle=grd;
+	ctx.fillRect(20,20,150,100);
+	
+
+
+
+
